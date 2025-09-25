@@ -1,0 +1,66 @@
+.why-us {
+  text-align: center;
+  padding: 60px 20px;
+  background: #f9f9f9;
+}
+
+.why-us h2 {
+  font-size: 2.2rem;
+  margin-bottom: 40px;
+  color: #222;
+}
+
+.why-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+
+.why-card {
+  background: transparent;
+  width: 220px;
+  height: 180px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.why-card .front, 
+.why-card .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.8s;
+  backface-visibility: hidden;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+  padding: 20px;
+}
+
+.why-card .front {
+  background: white;
+}
+
+.why-card .back {
+  background: linear-gradient(135deg, #ff7e5f, #feb47b);
+  color: white;
+  transform: rotateY(180deg);
+  font-size: 0.95rem;
+}
+
+.why-card:hover .front {
+  transform: rotateY(180deg);
+}
+
+.why-card:hover .back {
+  transform: rotateY(360deg);
+}
+
+.icon {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}

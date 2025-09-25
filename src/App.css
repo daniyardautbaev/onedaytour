@@ -1,38 +1,93 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.tour-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;           /* пусть занимает всю ширину своей ячейки */
+  max-width: 350px;      /* но не больше 350px */
   display: flex;
   flex-direction: column;
+}
+
+.tour-image img {
+  width: 100%;
+  height: 200px;          /* фиксированная высота */
+  object-fit: cover;      /* картинка не растягивается */
+}
+
+.tour-content {
+  padding: 16px;
+  text-align: left;
+}
+
+.tour-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.tour-locations {
+  margin-bottom: 12px;
+}
+
+.location-item {
+  display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 6px;
 }
 
-.App-link {
-  color: #61dafb;
+.tour-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.tour-btn {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between; /* логотип слева, ссылки справа */
+  align-items: center;
+  padding: 16px 32px;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;               /* в ряд */
+  list-style: none;            /* убираем точки */
+  gap: 20px;                   /* расстояние между пунктами */
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.nav-links li:hover {
+  color: #007bff;
+}
+
+.tours-section {
+  padding: 40px 20px;
+}
+
+.tours-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* автоматически 2-3 колонки */
+  gap: 20px; /* расстояние между карточками */
+  justify-items: center;
 }

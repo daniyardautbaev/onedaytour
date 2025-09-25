@@ -1,0 +1,44 @@
+/* src/components/HeroSection.css */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 90vh; /* почти на весь экран */
+  background: url("https://i.pinimg.com/1200x/02/aa/6e/02aa6e81ed05465f446bb1ecefa0647d.jpg") 
+              no-repeat center center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-overlay {
+  text-align: center;
+  color: white;
+  background: rgba(0, 0, 0, 0.4); /* затемнение фона */
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+}
+
+.hero-btn {
+  padding: 12px 25px;
+  background-color: #ff9800;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.hero-btn:hover {
+  background-color: #e68900;
+}
