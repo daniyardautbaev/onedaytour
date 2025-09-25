@@ -24,7 +24,7 @@ const tours = [
     isVip: true,
   },
   {
-    image: "https://i.pinimg.com/736x/5e/44/9a/5e449a04106b25afd0dfe0dd4b7137f5.jpg",
+    image: "https://i.pinimg.com/736x/8d/b6/f4/8db6f4b2b79bf652243e9f693a4a2e4b.jpg",
     title: "Тур по Алматы",
     price: "10,000 ₸/Человек",
     locations: ["Медеу", "Зеленый базар", "Шымбулак", "Парк 28 Панфиловцев", "Кок Тобе", "Вознесенский собор"],

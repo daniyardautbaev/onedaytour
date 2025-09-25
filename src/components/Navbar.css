@@ -1,0 +1,81 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 40px;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  color: #ff9800;
+  letter-spacing: 1px;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.nav-links li {
+  cursor: pointer;
+  font-size: 16px;
+  transition: color 0.3s;
+  position: relative;
+}
+
+.nav-links li:hover {
+  color: #ff9800;
+}
+
+/* выпадающее меню */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  list-style: none;
+  margin: 0;
+  padding: 10px 0;
+  min-width: 220px;
+  border-radius: 6px;
+  z-index: 2000;
+}
+
+.dropdown-menu li {
+  padding: 10px 15px;
+  white-space: nowrap;
+  transition: background 0.3s;
+}
+
+.dropdown-menu li:hover {
+  background: #f8f8f8;
+  color: #ff9800;
+}
+
+/* показываем меню при наведении */
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* иконка языка */
+.lang-switch {
+  cursor: pointer;
+  font-size: 20px;
+  transition: transform 0.3s ease;
+}
+
+.lang-switch:hover {
+  transform: rotate(20deg) scale(1.2);
+}

@@ -9,6 +9,8 @@ import Home from "./pages/Home";
 import Tours from "./pages/Tours";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import TourDetails from "./pages/TourDetails"; // экран для информации о туре
+import Apply from "./pages/Apply" ;
 
 function App() {
   return (
@@ -23,6 +25,12 @@ function App() {
           <Route path="/tours" element={<Tours />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+
+          {/* Детали тура */}
+          <Route path="/tours/:id" element={<TourDetails />} />
+
+          {/* Форма заявки */}
+          <Route path="/apply" element={<Apply />} />
         </Routes>
       </main>
 
