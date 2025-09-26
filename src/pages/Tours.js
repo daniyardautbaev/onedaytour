@@ -1,13 +1,16 @@
 // src/pages/Tours.js
-import React from "react";
+import tours from "../data/toursData"
+import TourCard from "../components/TourCard"
 
-const Tours = () => {
+export default function Tours() {
   return (
-    <div>
-      <h1>Tours</h1>
-      <p>Here you can explore all available tours.</p>
+    <div className="tours-page">
+      <h1>Наши туры</h1>
+      <div className="tours-grid">
+        {tours.map((tour) => (
+          <TourCard key={tour.id} {...tour} />
+        ))}
+      </div>
     </div>
-  );
-};
-
-export default Tours;
+  )
+}

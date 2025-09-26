@@ -1,0 +1,102 @@
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #f5f6fa; /* лёгкий фон страницы */
+}
+
+.tour-details-fullwidth {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.tour-title {
+  text-align: center;
+  font-size: 2.2rem;
+  margin: 20px 0 10px 0;
+  color: #2c3e50;
+  font-weight: bold;
+}
+
+.tour-description {
+  text-align: center;
+  margin-bottom: 5px;
+  color: #333;
+  font-size: 1rem;
+}
+
+.tour-price {
+  text-align: center;
+  font-weight: bold;
+  color: #e74c3c;
+  margin-bottom: 30px;
+  font-size: 1.2rem;
+}
+
+.locations-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 25px;
+  color: #2980b9;
+  font-weight: bold;
+}
+
+/* Каждая локация на всю ширину */
+.location-fullwidth {
+  margin-bottom: 50px;
+  background: #ffffff;
+  padding: 20px 0;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+/* Название локации */
+.location-title {
+  text-align: center;
+  font-size: 1.6rem;
+  color: #1d3557;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+/* Ряд фото */
+.location-images-row {
+  display: flex;
+  width: 100%;
+  gap: 15px; /* расстояние между фото */
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 0 20px;
+}
+
+/* Фотографии */
+.location-image {
+  width: calc(33.333% - 10px); /* 3 фото в ряд с учётом gap */
+  height: 250px;
+  object-fit: cover;
+  border-radius: 15px; /* скруглённые края */
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1); /* тень */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.location-image:hover {
+  transform: scale(1.05); /* лёгкое увеличение */
+  box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+  filter: brightness(1.05);
+}
+
+/* Описание под фото */
+.location-description {
+  text-align: center;
+  margin-top: 12px;
+  color: #34495e;
+  font-size: 1rem;
+}
+
+.location-fact {
+  text-align: center;
+  color: #555;
+  font-style: italic;
+  margin-top: 5px;
+  font-size: 0.95rem;
+}

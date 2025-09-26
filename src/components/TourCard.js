@@ -1,4 +1,6 @@
-const TourCard = ({ image, title, description, price, locations, isVip }) => {
+import { Link } from "react-router-dom"
+
+const TourCard = ({ id, image, title, description, price, locations, isVip }) => {
   return (
     <div className={`tour-card ${isVip ? "tour-card-vip" : ""}`}>
       <div className="tour-image">
@@ -16,7 +18,9 @@ const TourCard = ({ image, title, description, price, locations, isVip }) => {
         </div>
         <div className="tour-footer">
           <div className="tour-price">{price}</div>
-          <button className="tour-btn">Подробнее</button>
+          <Link to={`/tours/${id}`}>
+            <button className="tour-btn">Подробнее</button>
+          </Link>
         </div>
       </div>
     </div>
