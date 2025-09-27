@@ -25,7 +25,6 @@ function Home() {
 
       {/* Отзывы */}
       <section style={{ padding: "50px 20px" }}>
-        <h2>Отзывы клиентов</h2>
         <Reviews />
       </section>
     </div>

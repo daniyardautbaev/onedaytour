@@ -1,0 +1,35 @@
+.tour-card {
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.tour-card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.12); }
+
+.tour-card-vip { outline: 2px solid #ffd54f; }
+
+.tour-image { position: relative; display: block; }
+.tour-image img { width: 100%; height: 220px; object-fit: cover; display: block; aspect-ratio: 16 / 10; }
+.tour-badge { position: absolute; top: 10px; left: 10px; background: linear-gradient(135deg, #ffca28, #ff8f00); color: #000; font-weight: 800; font-size: 12px; padding: 6px 10px; border-radius: 999px; box-shadow: 0 2px 8px rgba(0,0,0,.2); }
+
+.tour-content { padding: 14px; display: grid; gap: 10px; }
+.tour-title { margin: 0; font-size: 18px; font-weight: 700; }
+.tour-title a { color: inherit; text-decoration: none; }
+.tour-title a:hover, .tour-title a:focus-visible { color: #ff9800; outline: none; }
+
+.tour-meta { color: #555; font-size: 13px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.tour-meta .dot { color: #bbb; }
+
+.tour-desc { color: #4b5563; font-size: 14px; line-height: 1.45; }
+
+.tour-locations { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.location-item { display: flex; align-items: center; gap: 6px; color: #374151; font-size: 14px; }
+.location-icon { font-size: 16px; }
+
+.tour-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 6px; }
+.tour-price { font-weight: 800; font-size: 18px; }
+.tour-btn { background: #007bff; color: #fff; text-decoration: none; border: 0; padding: 8px 14px; border-radius: 10px; font-weight: 600; }
+.tour-btn:hover, .tour-btn:focus-visible { background: #479bff; outline: none; }

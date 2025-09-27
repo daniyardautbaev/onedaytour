@@ -1,20 +1,33 @@
-// src/components/TourList.js
-import TourCard from "./TourCard"
-import tours from "../data/toursData"   // ✅ берём туры из общего файла
+import React from "react";
+import { Link } from "react-router-dom";
+import toursData from "../data/toursData";
+import TourCard from "./TourCard";
+import "./TourList.css";
 
-const TourList = () => {
+/**
+ * Renders a responsive grid of tours with an empty state.
+ * Pass `tours` to override the default dataset (e.g., from API/TanStack Query).
+ */
+export default function TourList({ tours = toursData }) {
+  const hasTours = Array.isArray(tours) && tours.length > 0;
+
   return (
-    <section className="tours-section">
-      <h2 className="tours-title text-2xl font-bold mb-4 text-center">Туры</h2>
-      <div className="tours-dots text-center text-gray-400 mb-6">• • • • • •</div>
+    <section className="tours-section" aria-labelledby="tours-title">
+      <h2 id="tours-title" className="tours-title">Туры</h2>
+      <div className="tours-dots" aria-hidden>• • • • • •</div>
 
-      <div className="tours-grid">
-        {tours.map((tour) => (
-          <TourCard key={tour.id} {...tour} id={tour.id} />
-        ))}
-      </div>
+      {hasTours ? (
+        <div className="tours-grid">
+          {tours.map((tour) => (
+            <TourCard key={tour.id} {...tour} />
+          ))}
+        </div>
+      ) : (
+        <div className="tours-empty">
+          <p>Пока нет доступных туров. Загляните позже или свяжитесь с нами.</p>
+          <Link to="/apply" className="tours-cta">Оставить заявку</Link>
+        </div>
+      )}
     </section>
-  )
+  );
 }
-
-export default TourList
