@@ -30,14 +30,14 @@ export default function Footer() {
           <h3 className="col-title">Контакты</h3>
           <ul className="contact-list" role="list">
             <li>
-              <a href="tel:+77072439005" className="contact-link" aria-label="Позвонить по номеру +7 707 243 90 05">📞 +7 707 243 90 05</a>
+              <a href="tel:+77786680335" className="contact-link" aria-label="Позвонить по номеру +7 707 243 90 05">📞 +77786680335</a>
             </li>
             <li>
-              <a href="mailto:onedaytour@gmail.com" className="contact-link">✉️ onedaytour@gmail.com</a>
+              <a href="mailto:zhanibekbeisenov8@gmail.com" className="contact-link">✉️ onedaytour@gmail.com</a>
             </li>
           </ul>
           <div className="socials" aria-label="Социальные сети">
-            <a className="social" href="#" aria-label="Instagram">📷</a>
+         
             <a className="social" href="#" aria-label="WhatsApp">💬</a>
             <a className="social" href="#" aria-label="Telegram">✈️</a>
           </div>

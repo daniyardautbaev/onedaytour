@@ -5,13 +5,17 @@ import HeroSection from "../components/HeroSection";
 import TourList from "../components/TourList";
 import WhyChooseUs from "../components/WhyChooseUs";
 import Reviews from "../components/Reviews";
+import AlmatyTripJourney from "../components/Trip";
 
 function Home() {
   return (
     <div>
       {/* Герой-секция */}
       <HeroSection />
-
+      
+      <section>
+        <AlmatyTripJourney></AlmatyTripJourney>
+      </section>
       {/* Популярные туры */}
       <section style={{ padding: "50px 20px", textAlign: "center" }}>
         <h2>Популярные туры</h2>

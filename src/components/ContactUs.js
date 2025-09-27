@@ -1,28 +1,6 @@
-// src/pages/Apply.js
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import "./Apply.css";
-import ContactUs from "../components/ContactUs";
+import React from "react";
 
-function Apply() {
-  const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    email: "",
-  });
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Заявка отправлена:", formData);
-    alert("Спасибо! Мы свяжемся с вами.");
-    navigate("/"); // после отправки — на главную
-  };
-
+export default function ContactUs() {
   return (
     <section className="bg-amber-50 min-h-[70vh] flex items-center justify-center px-4 py-16" aria-labelledby="contact-title">
       <div className="max-w-xl w-full text-center bg-white rounded-2xl shadow-lg p-10">
@@ -36,7 +14,7 @@ function Apply() {
         <ul className="space-y-4">
           <li>
             <a
-              href="mailto:zhanibekbeisenov8@gmail.com"
+              href="mailto:onedaytour@gmail.com"
               className="block w-full py-4 px-6 rounded-xl font-semibold text-white text-lg bg-gradient-to-r from-blue-500 to-green-500 shadow-md hover:shadow-lg hover:-translate-y-1 transform transition"
             >
               ✉️ onedaytour@gmail.com
@@ -44,15 +22,15 @@ function Apply() {
           </li>
           <li>
             <a
-              href="tel:+77786680335"
+              href="tel:+77072439005"
               className="block w-full py-4 px-6 rounded-xl font-semibold text-white text-lg bg-gradient-to-r from-orange-400 to-orange-600 shadow-md hover:shadow-lg hover:-translate-y-1 transform transition"
             >
-              📞 +7 778 668 03 35
+              📞 +7 707 243 90 05
             </a>
           </li>
           <li>
             <a
-              href="https://wa.me/77476467919"
+              href="https://wa.me/77072439005"
               target="_blank"
               rel="noopener noreferrer"
               className="block w-full py-4 px-6 rounded-xl font-semibold text-white text-lg bg-gradient-to-r from-green-400 to-green-600 shadow-md hover:shadow-lg hover:-translate-y-1 transform transition"
@@ -65,5 +43,3 @@ function Apply() {
     </section>
   );
 }
-
-export default Apply;

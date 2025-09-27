@@ -155,7 +155,7 @@ export default function Navbar({ tours = DEFAULT_TOURS, onLangChange }) {
         </li>
 
         <li role="none">
-          <a role="menuitem" href="/contacts" className="nav-link">Contact</a>
+          <a role="menuitem" href="/contact" className="nav-link">Contact</a>
         </li>
         <li role="none">
           <a role="menuitem" href="/about" className="nav-link">About Us</a>
@@ -201,7 +201,7 @@ export default function Navbar({ tours = DEFAULT_TOURS, onLangChange }) {
             ))}
           </div>
         </details>
-        <a className="mobile-link" href="/contacts" onClick={() => setMobileOpen(false)}>Contact</a>
+        <a className="mobile-link" href="/contact" onClick={() => setMobileOpen(false)}>Contact</a>
         <a className="mobile-link" href="/about" onClick={() => setMobileOpen(false)}>About Us</a>
       </div>
     </nav>
