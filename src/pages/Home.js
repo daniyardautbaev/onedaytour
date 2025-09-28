@@ -13,12 +13,11 @@ function Home() {
       {/* Герой-секция */}
       <HeroSection />
       
-      <section>
+      <section className="">
         <AlmatyTripJourney></AlmatyTripJourney>
       </section>
       {/* Популярные туры */}
       <section style={{ padding: "50px 20px", textAlign: "center" }}>
-        <h2>Популярные туры</h2>
         <TourList />
       </section>
 

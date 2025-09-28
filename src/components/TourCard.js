@@ -19,7 +19,7 @@ function TourCardBase({
   durationHours,
   nextDateISO,
 }) {
-  const priceLabel = useMemo(() => (typeof price === "number" ? KZT.format(price) : price), [price]);
+  
   const dateLabel = nextDateISO ? new Intl.DateTimeFormat("kk-KZ", { dateStyle: "medium", timeZone: "Asia/Almaty" }).format(new Date(nextDateISO)) : null;
 
   return (
@@ -31,7 +31,7 @@ function TourCardBase({
           loading="lazy"
           decoding="async"
         />
-        {isVip && <span className="tour-badge" aria-label="VIP тур">VIP</span>}
+        {isVip && <span className="tour-badge" aria-label="VIP тур">HOT</span>}
       </Link>
 
       <div className="tour-content">
@@ -61,8 +61,7 @@ function TourCardBase({
         )}
 
         <div className="tour-footer">
-          <div className="tour-price" aria-label={`Цена ${priceLabel}`}>{priceLabel}</div>
-          <Link to={`/tours/${id}`} className="tour-btn">Подробнее</Link>
+          <Link to={`/contact`} className="tour-btn">Get More</Link>
         </div>
       </div>
     </article>

@@ -1,54 +1,56 @@
 // src/data/toursData.js
 const tours = [
+
   {
     id: 1,
-    image: "https://i.pinimg.com/736x/5b/23/54/5b23546f45b945768ca00a4cced91cb1.jpg",
-    title: "Однодневный тур 6 локаций",
-    price: "11,500 ₸/Человек",
-    description: "Насыщенный тур по самым красивым местам Жетысу всего за один день!",
+    image: "https://i.pinimg.com/736x/8d/b6/f4/8db6f4b2b79bf652243e9f693a4a2e4b.jpg",
+    title: "Almaty City Tour",
+  
+    description: "Excursion to the main attractions of Almaty.",
     locations: [
-      "Чарын каньон",
-      "Озеро Каинды",
-      "Долина замков",
-      "Река Чарын",
-      "Озеро Кольсай",
-      "Черный каньон",
-    ],
-    isVip: false,
-  },
-  {
-    id: 2,
-    image: "https://i.pinimg.com/736x/96/ec/f8/96ecf8a1306b2a753eebe8fb2c45f090.jpg",
-    title: "Однодневный VIP тур 7 локаций",
-    price: "24,000 ₸/Человек",
-    description: "VIP тур с максимальным комфортом и дополнительными локациями.",
-    locations: [
-      "Чарын каньон",
-      "Река Чарын",
-      "Долина замков",
-      "Черный каньон",
-      "Озеро Кольсай",
-      "Лунный каньон",
-      "Озеро Каинды",
+      "Medeu",
+      "Green Bazaar",
+      "Shymbulak",
+      "28 Panfilov Guardsmen Park",
+      "Kok-Tobe",
+      "Ascension Cathedral",
     ],
     isVip: true,
   },
   {
-    id: 3,
-    image: "https://i.pinimg.com/736x/8d/b6/f4/8db6f4b2b79bf652243e9f693a4a2e4b.jpg",
-    title: "Тур по Алматы",
-    price: "10,000 ₸/Человек",
-    description: "Экскурсия по главным достопримечательностям Алматы.",
+    id: 2,
+    image: "https://i.pinimg.com/736x/5b/23/54/5b23546f45b945768ca00a4cced91cb1.jpg",
+    title: "One-Day Tour 6 Locations",
+  
+    description: "An intensive tour of the most beautiful places in Zhetysu in just one day!",
     locations: [
-      "Медеу",
-      "Зеленый базар",
-      "Шымбулак",
-      "Парк 28 Панфиловцев",
-      "Кок Тобе",
-      "Вознесенский собор",
+      "Charyn Canyon",
+      "Kaindy Lake",
+      "Valley of Castles",
+      "Charyn River",
+      "Kolsai Lake",
+      "Black Canyon",
     ],
     isVip: false,
   },
+  {
+    id: 3,
+    image: "https://i.pinimg.com/736x/96/ec/f8/96ecf8a1306b2a753eebe8fb2c45f090.jpg",
+    title: "One-Day VIP Tour 7 Locations",
+   
+    description: "VIP tour with maximum comfort and additional locations.",
+    locations: [
+      "Charyn Canyon",
+      "Charyn River",
+      "Valley of Castles",
+      "Black Canyon",
+      "Kolsai Lake",
+      "Moon Canyon",
+      "Kaindy Lake",
+    ],
+    isVip: false,
+  },
+
 ]
 
 export default tours

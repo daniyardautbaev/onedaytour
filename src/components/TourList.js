@@ -13,7 +13,7 @@ export default function TourList({ tours = toursData }) {
 
   return (
     <section className="tours-section" aria-labelledby="tours-title">
-      <h2 id="tours-title" className="tours-title">Туры</h2>
+      <h2 id="tours-title" className="tours-title">Other Tours</h2>
       <div className="tours-dots" aria-hidden>• • • • • •</div>
 
       {hasTours ? (

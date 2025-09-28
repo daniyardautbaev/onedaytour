@@ -1,16 +1,16 @@
 // src/pages/Contact.js
 
-import ContactUs from "../components/ContactUs";
+
 
 const Contact = () => {
   return (
-    <section className="bg-amber-50 min-h-[70vh] flex items-center justify-center px-4 py-16" aria-labelledby="contact-title">
+    <section className="min-h-screen flex items-center justify-center px-4 py-16" aria-labelledby="contact-title">
       <div className="max-w-xl w-full text-center bg-white rounded-2xl shadow-lg p-10">
         <h1 id="contact-title" className="text-3xl sm:text-4xl font-extrabold text-gray-800 mb-4">
-          Свяжитесь с нами
+          Contact us and get exclusive offer
         </h1>
         <p className="text-gray-500 mb-8 text-base sm:text-lg">
-          Мы всегда на связи и рады помочь вам с любыми вопросами по турам.
+          We are always in touch and happy to help you with any questions about tours.
         </p>
 
         <ul className="space-y-4">

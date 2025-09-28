@@ -14,14 +14,14 @@ export default function HeroSection() {
       <div className="hero-overlay">
         <h1 className="hero-title">OneDayTour</h1>
         <p className="hero-subtitle">
-          Ваш проводник в незабываемые приключения по горам и за границей.
+          Your guide to unforgettable adventures in the Almaty.
         </p>
         <button
           className="hero-btn"
           onClick={handleClick}
           aria-label="Перейти на страницу заявки"
         >
-          Оставить заявку
+          Contact us
         </button>
       </div>
     </section>

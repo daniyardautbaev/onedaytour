@@ -6,22 +6,22 @@ const WhyChooseUs = () => {
     { 
       text: "Unique Itineraries", 
       icon: "🗺️", 
-      desc: "Авторские маршруты, которых нет в Google." 
+      desc: "Author's routes that are not on Google." 
     },
     { 
       text: "Small Groups", 
       icon: "👥", 
-      desc: "Никакой толпы — максимум 10 человек в туре." 
+      desc: "No crowds - maximum 3 people per tour." 
     },
     { 
       text: "Bilingual Guides", 
       icon: "🗣️", 
-      desc: "Говорим на русском и английском, вам будет комфортно." 
+      desc: "We speak in any langugae), you will feel comfortable." 
     },
     { 
       text: "Free Photos", 
       icon: "📸", 
-      desc: "Профессиональные фото в подарок — воспоминания навсегда." 
+      desc: "Professional photos as a gift - memories forever." 
     },
   ];
 
