@@ -16,9 +16,9 @@ const TOURS = {
         description: "Знаменитый высокогорный каток и живописная долина.",
         fact: "Медео — самый большой высокогорный каток в мире.",
         images: [
-          "https://picsum.photos/800/500?random=11",
-          "https://picsum.photos/800/500?random=12",
-          "https://picsum.photos/800/500?random=13",
+          "https://i.pinimg.com/736x/b5/df/2e/b5df2eeaa052e4174be877a70fca058e.jpg",
+          "https://images.pexels.com/photos/13266743/pexels-photo-13266743.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          "https://i.pinimg.com/736x/3c/99/91/3c99918eaffb158d9a1ac4badd1c7598.jpg",
         ],
       },
       {
