@@ -26,9 +26,9 @@ const TOURS = {
         description: "Горнолыжный курорт мирового уровня.",
         fact: "На высоте 3200 м всегда свежий воздух и невероятные виды.",
         images: [
-          "https://picsum.photos/800/500?random=14",
-          "https://picsum.photos/800/500?random=15",
-          "https://picsum.photos/800/500?random=16",
+          "https://kompastour.com/useruploads/regions/region_fbd1db8d9a.jpg",
+          "https://i.pinimg.com/736x/04/5a/46/045a46b4e76ca92fcc6888aa16a0253d.jpg",
+          "https://i.pinimg.com/1200x/f4/30/fd/f430fd93450b2a05f4289c20d69add0c.jpg",
         ],
       },
     ],
