@@ -1,25 +1,22 @@
-import React, { memo, useMemo } from "react";
+
+import React, { memo } from "react";
 import { Link } from "react-router-dom";
 import "./TourCard.css";
 
 const KZT = new Intl.NumberFormat("kk-KZ", { style: "currency", currency: "KZT", maximumFractionDigits: 0 });
 
-/**
- * Accessible tour card with VIP badge, lazy image, and KZT price.
- */
 function TourCardBase({
   id,
   image,
   title,
   description,
-  price, // assume KZT number
+  price,
   locations = [],
   isVip = false,
   rating,
   durationHours,
   nextDateISO,
 }) {
-  
   const dateLabel = nextDateISO ? new Intl.DateTimeFormat("kk-KZ", { dateStyle: "medium", timeZone: "Asia/Almaty" }).format(new Date(nextDateISO)) : null;
 
   return (
@@ -47,14 +44,14 @@ function TourCardBase({
           </div>
         )}
 
-        {description && <p className="tour-desc">{description}</p>}
+        {description && <p className="tour-desc" dangerouslySetInnerHTML={{ __html: description }} />}
 
         {Array.isArray(locations) && locations.length > 0 && (
           <ul className="tour-locations" aria-label="Локации">
             {locations.map((loc, i) => (
               <li key={i} className="location-item">
                 <span className="location-icon" aria-hidden>📍</span>
-                <span className="location-text">{loc}</span>
+                <span className="location-text" dangerouslySetInnerHTML={{ __html: loc }} />
               </li>
             ))}
           </ul>
@@ -62,6 +59,7 @@ function TourCardBase({
 
         <div className="tour-footer">
           <Link to={`/contact`} className="tour-btn">Get More</Link>
+          <div className="tour-price">{price != null ? KZT.format(price) : "—"}</div>
         </div>
       </div>
     </article>
