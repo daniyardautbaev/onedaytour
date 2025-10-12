@@ -5,6 +5,11 @@ import "./TourCard.css";
 
 const KZT = new Intl.NumberFormat("kk-KZ", { style: "currency", currency: "KZT", maximumFractionDigits: 0 });
 
+function stripTags(input) {
+  if (typeof input !== "string") return input;
+  return input.replace(/<\/?[^>]+(>|$)/g, "");
+}
+
 function TourCardBase({
   id,
   image,
@@ -33,7 +38,7 @@ function TourCardBase({
 
       <div className="tour-content">
         <h3 className="tour-title">
-          <Link to={`/tours/${id}`}>{title}</Link>
+          <Link to={`/tours/${id}`}>{stripTags(title)}</Link>
         </h3>
 
         {typeof rating === "number" && (
@@ -44,14 +49,14 @@ function TourCardBase({
           </div>
         )}
 
-        {description && <p className="tour-desc" dangerouslySetInnerHTML={{ __html: description }} />}
+        {description && <p className="tour-desc">{stripTags(description)}</p>}
 
         {Array.isArray(locations) && locations.length > 0 && (
           <ul className="tour-locations" aria-label="Локации">
             {locations.map((loc, i) => (
               <li key={i} className="location-item">
                 <span className="location-icon" aria-hidden>📍</span>
-                <span className="location-text" dangerouslySetInnerHTML={{ __html: loc }} />
+                <span className="location-text">{stripTags(loc)}</span>
               </li>
             ))}
           </ul>
