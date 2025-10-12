@@ -1,6 +1,16 @@
+// src/pages/Apply.js  (secure)
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Apply.css";
+
+/**
+ * Простая функция для удаления HTML-тегов (fallback).
+ * Для production лучше использовать DOMPurify.
+ */
+function stripTags(input) {
+  if (typeof input !== "string") return input;
+  return input.replace(/<\/?[^>]+(>|$)/g, "");
+}
 
 function Apply() {
   const navigate = useNavigate();
@@ -9,22 +19,39 @@ function Apply() {
     phone: "",
     email: "",
   });
+  const [submittedMessage, setSubmittedMessage] = useState("");
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const validateEmail = (email) => /\S+@\S+\.\S+/.test(email);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Уязвимая часть: вставляем пользовательский ввод прямо в innerHTML
-  const message = (
-  <>
-    <strong>Спасибо, {formData.name}!</strong> Мы свяжемся по {formData.email}.
-  </>
-  );
-    document.getElementById("apply-response").innerHTML = message; // XSS risk
-    console.log("Заявка отправлена:", formData);
-    // Для демонстрации не перенаправляем, оставляем вывод на странице
+
+    // Базовая валидация
+    if (!formData.name.trim()) {
+      alert("Пожалуйста, введите имя.");
+      return;
+    }
+    if (formData.email && !validateEmail(formData.email)) {
+      alert("Пожалуйста, введите корректный email.");
+      return;
+    }
+
+    // Не выводим user input через innerHTML — используем безопасный текст
+    const safeName = stripTags(formData.name);
+    const safeEmail = stripTags(formData.email);
+
+    // Обновляем состояние — React экранирует спецсимволы
+    setSubmittedMessage(`Спасибо, ${safeName}! Мы свяжемся по ${safeEmail || "указанному телефону"}.`);
+
+    // Логируем минимально (без вывода полного объекта, чтобы не утекли данные)
+    console.log("Заявка отправлена (имя):", safeName);
+
+    // Можно перенаправить, но в учебном примере оставим сообщение
+    // navigate("/"); 
   };
 
   return (
@@ -40,10 +67,11 @@ function Apply() {
           <button type="submit" className="w-full py-3 bg-blue-600 text-white rounded">Отправить</button>
         </form>
 
-        <div id="apply-response" className="mt-6 text-green-700" aria-live="polite"></div>
+        {/* Безопасный вывод — React экранирует содержимое */}
+        {submittedMessage && <div id="apply-response" className="mt-6 text-green-700" aria-live="polite">{submittedMessage}</div>}
 
         <p className="text-gray-500 mt-6 text-sm">
-          (Учебный пример: в уязвимой версии показывается XSS при вводе HTML в поле имени).
+          (Безопасная версия: пользовательский ввод очищается и выводится как текст. Для production — используйте DOMPurify.)
         </p>
       </div>
     </section>
