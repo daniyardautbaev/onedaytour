@@ -1,55 +1,111 @@
-import { useParams } from "react-router-dom";
-import tours from "../data/toursData";
+// src/pages/TourDetails.js
+import React from "react";
+import { useParams, Link } from "react-router-dom";
 import "./TourDetails.css";
+
+const TOURS = {
+  1: {
+    id: 1,
+    title: "Горы Алматы",
+    description:
+      "Невероятное путешествие в живописные горы Алматы. Красивые виды, свежий воздух и незабываемые впечатления.",
+    price: "от  80$",
+    locations: [
+      {
+        title: "Медео",
+        description: "Знаменитый высокогорный каток и живописная долина.",
+        fact: "Медео — самый большой высокогорный каток в мире.",
+        images: [
+          "https://i.pinimg.com/736x/b5/df/2e/b5df2eeaa052e4174be877a70fca058e.jpg",
+          "https://images.pexels.com/photos/13266743/pexels-photo-13266743.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          "https://i.pinimg.com/736x/3c/99/91/3c99918eaffb158d9a1ac4badd1c7598.jpg",
+        ],
+      },
+      {
+        title: "Шымбулак",
+        description: "Горнолыжный курорт мирового уровня.",
+        fact: "На высоте 3200 м всегда свежий воздух и невероятные виды.",
+        images: [
+          "https://kompastour.com/useruploads/regions/region_fbd1db8d9a.jpg",
+          "https://i.pinimg.com/736x/04/5a/46/045a46b4e76ca92fcc6888aa16a0253d.jpg",
+          "https://i.pinimg.com/1200x/f4/30/fd/f430fd93450b2a05f4289c20d69add0c.jpg",
+        ],
+      },
+    ],
+    extraInfo: {
+      icon: "⛰️",
+      title: "Легенды и факты о горах",
+      text: "Алматинские горы — это источник вдохновения и легенд. Кочевники считали горы священными: здесь они искали защиты и мудрости. Сегодня вы сможете пройти по тропам, где каждый камень хранит историю, и насладиться красотой природы, сохранившей первозданную силу.",
+    },
+  },
+  2: {
+    id: 2,
+    title: "Конный тур",
+    description:
+      "Увлекательный конный тур по живописным местам Алматы. Отличный отдых на природе и полное погружение в атмосферу.",
+    price: "от 80$ ",
+    locations: [
+      {
+        title: "Alatay Mountains",
+        description: "Зелёная равнина с бескрайними просторами для верховой езды.",
+        fact: "Здесь можно увидеть настоящих кочевых пастухов.",
+        images: [
+          "https://toptrip.kz/wp-content/uploads/2020/11/toptrip_horse_tour-e1671557970449.jpg",
+          "https://media.s7cdn.online/api/v1/img/resize/1072/*/webp/media.s7cdn.online/S7PCabinService/media/6e3aea13-ca61-44d7-9e12-bfb57ae34b3a?ns=s7Media&v=1&iopts=q:75",
+          "https://modo.kg/wp-content/uploads/2023/07/18-1024x599.jpg",
+        ],
+      },
+    ],
+    extraInfo: {
+      icon: "🐎",
+      title: "Кони в истории Казахстана",
+      text: "Казахстан — родина первых одомашненных лошадей. Лошадь всегда была символом свободы, силы и верного спутника кочевников. В конном туре вы почувствуете дыхание степи, узнаете больше о традициях коневодства и обретёте уникальный опыт общения с этими величественными животными.",
+    },
+  },
+};
 
 export default function TourDetails() {
   const { id } = useParams();
-  const tour = tours.find((t) => t.id === parseInt(id));
+  const tour = TOURS[id];
 
   if (!tour) {
-    return <h2>Тур не найден</h2>;
+    return <h2 className="not-found">Тур не найден</h2>;
   }
-
-  const locationsInfo = {
-    "Чарын каньон": {
-      images: [
-        "https://i.pinimg.com/736x/52/b3/bf/52b3bfa645538ed3589e16025d9ca0d7.jpg",
-        "https://i.pinimg.com/736x/65/5c/c7/655cc74f142499139586b6712e920425.jpg",
-        "https://i.pinimg.com/1200x/69/d2/31/69d2317709aaeeefd105333a35d0d6b2.jpg"
-      ],
-      description: "Чарынский каньон — уникальный природный объект, протянувшийся на 154 км вдоль реки Чарын.",
-      fact: "Возраст каньона — около 12 миллионов лет."
-    },
-    "Озеро Каинды": {
-      images: [
-        "https://i.pinimg.com/736x/96/ec/f8/96ecf8a1306b2a753eebe8fb2c45f090.jpg",
-        "https://i.pinimg.com/736x/41/0e/62/410e623e2bcf1f98d7b4f41638d3d5b3.jpg",
-        "https://i.pinimg.com/736x/0a/6b/42/0a6b428aefc2a1d5b5b5f9ecb68c1f7e.jpg"
-      ],
-      description: "Озеро Каинды, также известное как «Затонувший лес», образовалось в 1911 году после землетрясения.",
-      fact: "Высота озера над уровнем моря — 1667 м."
-    }
-  };
 
   return (
     <div className="tour-details-fullwidth">
       <h1 className="tour-title">{tour.title}</h1>
       <p className="tour-description">{tour.description}</p>
-      <p className="tour-price">Цена: {tour.price}</p>
+      <p className="tour-price">{tour.price}</p>
 
-      <h2 className="locations-title">Локации</h2>
-      {tour.locations.map((location, index) => (
+      <h2 className="locations-title">Локации тура</h2>
+
+      {tour.locations.map((loc, index) => (
         <div key={index} className="location-fullwidth">
-          <h3 className="location-title">{location}</h3>
+          <h3 className="location-title">{loc.title}</h3>
           <div className="location-images-row">
-            {locationsInfo[location]?.images.map((img, idx) => (
-              <img key={idx} src={img} alt={`${location} ${idx+1}`} className="location-image"/>
+            {loc.images.map((src, idx) => (
+              <img
+                key={idx}
+                src={src}
+                alt={`${loc.title} ${idx + 1}`}
+                className="location-image"
+              />
             ))}
           </div>
-          <p className="location-description">{locationsInfo[location]?.description}</p>
-          <p className="location-fact"><strong>Интересный факт:</strong> {locationsInfo[location]?.fact}</p>
+          <p className="location-description">{loc.description}</p>
+          <p className="location-fact">💡 {loc.fact}</p>
         </div>
       ))}
+
+      {/* Креативный блок */}
+      <div className="extra-block">
+        <div className="extra-icon">{tour.extraInfo.icon}</div>
+        <h2 className="extra-title">{tour.extraInfo.title}</h2>
+        <p className="extra-text">{tour.extraInfo.text}</p>
+      </div>
+
+      <Link to="/" className="back-link">← Назад</Link>
     </div>
   );
 }
