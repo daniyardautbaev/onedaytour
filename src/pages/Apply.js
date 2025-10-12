@@ -1,8 +1,6 @@
-// src/pages/Apply.js
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Apply.css";
-import ContactUs from "../components/ContactUs";
 
 function Apply() {
   const navigate = useNavigate();
@@ -18,49 +16,35 @@ function Apply() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // Уязвимая часть: вставляем пользовательский ввод прямо в innerHTML
+  const message = (
+  <>
+    <strong>Спасибо, {formData.name}!</strong> Мы свяжемся по {formData.email}.
+  </>
+  );
+    document.getElementById("apply-response").innerHTML = message; // XSS risk
     console.log("Заявка отправлена:", formData);
-    alert("Спасибо! Мы свяжемся с вами.");
-    navigate("/"); // после отправки — на главную
+    // Для демонстрации не перенаправляем, оставляем вывод на странице
   };
 
   return (
     <section className="bg-amber-50 min-h-[70vh] flex items-center justify-center px-4 py-16" aria-labelledby="contact-title">
-      <div className="max-w-xl w-full text-center bg-white rounded-2xl shadow-lg p-10">
+      <div className="max-w-xl w-full bg-white rounded-2xl shadow-lg p-10">
         <h1 id="contact-title" className="text-3xl sm:text-4xl font-extrabold text-gray-800 mb-4">
-          Свяжитесь с нами
+          Отправить заявку
         </h1>
-        <p className="text-gray-500 mb-8 text-base sm:text-lg">
-          Мы всегда на связи и рады помочь вам с любыми вопросами по турам.
-        </p>
+        <form onSubmit={handleSubmit} className="space-y-4" aria-label="Apply form">
+          <input name="name" value={formData.name} onChange={handleChange} placeholder="Ваше имя" className="w-full p-3 border rounded" />
+          <input name="phone" value={formData.phone} onChange={handleChange} placeholder="Телефон" className="w-full p-3 border rounded" />
+          <input name="email" value={formData.email} onChange={handleChange} placeholder="Email" className="w-full p-3 border rounded" />
+          <button type="submit" className="w-full py-3 bg-blue-600 text-white rounded">Отправить</button>
+        </form>
 
-        <ul className="space-y-4">
-          <li>
-            <a
-              href="mailto:zhanibekbeisenov8@gmail.com"
-              className="block w-full py-4 px-6 rounded-xl font-semibold text-white text-lg bg-gradient-to-r from-blue-500 to-green-500 shadow-md hover:shadow-lg hover:-translate-y-1 transform transition"
-            >
-              ✉️ onedaytour@gmail.com
-            </a>
-          </li>
-          <li>
-            <a
-              href="tel:+77786680335"
-              className="block w-full py-4 px-6 rounded-xl font-semibold text-white text-lg bg-gradient-to-r from-orange-400 to-orange-600 shadow-md hover:shadow-lg hover:-translate-y-1 transform transition"
-            >
-              📞 +7 778 668 03 35
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://wa.me/77476467919"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block w-full py-4 px-6 rounded-xl font-semibold text-white text-lg bg-gradient-to-r from-green-400 to-green-600 shadow-md hover:shadow-lg hover:-translate-y-1 transform transition"
-            >
-              💬 WhatsApp Chat
-            </a>
-          </li>
-        </ul>
+        <div id="apply-response" className="mt-6 text-green-700" aria-live="polite"></div>
+
+        <p className="text-gray-500 mt-6 text-sm">
+          (Учебный пример: в уязвимой версии показывается XSS при вводе HTML в поле имени).
+        </p>
       </div>
     </section>
   );
