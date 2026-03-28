@@ -140,3 +140,67 @@
   .nav-links { display: none; }
   .hamburger { display: inline-block; }
 }
+/* ---- Модальное окно ---- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6); /* затемнение */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; /* поверх всего */
+}
+
+.modal {
+  background: #fff;
+  border-radius: 12px;
+  max-width: 500px;
+  width: 90%;
+  padding: 2rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  animation: fadeIn 0.3s ease-in-out;
+  text-align: center;
+}
+
+.modal h2 {
+  margin-top: 0;
+  font-size: 1.8rem;
+  color: #333;
+}
+
+.modal p {
+  margin: 1rem 0 2rem;
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+.modal button {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.modal button:hover {
+  background: #0056b3;
+}
+
+/* Анимация появления */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
