@@ -1,37 +1,19 @@
-// src/pages/Home.js
 import React from "react";
-
 import HeroSection from "../components/HeroSection";
 import TourList from "../components/TourList";
 import WhyChooseUs from "../components/WhyChooseUs";
 import Reviews from "../components/Reviews";
 import AlmatyTripJourney from "../components/Trip";
+import "./Home.css";
 
-function Home() {
+export default function Home() {
   return (
-    <div>
-      {/* Герой-секция */}
+    <div className="home-page">
       <HeroSection />
-      
-      <section className="">
-        <AlmatyTripJourney></AlmatyTripJourney>
-      </section>
-      {/* Популярные туры */}
-      <section style={{ padding: "50px 20px", textAlign: "center" }}>
-        <TourList />
-      </section>
-
-      {/* Почему выбирают нас */}
-      <section style={{ padding: "50px 20px", backgroundColor: "#f9f9f9" }}>
-        <WhyChooseUs />
-      </section>
-
-      {/* Отзывы */}
-      <section style={{ padding: "50px 20px" }}>
-        <Reviews />
-      </section>
+      <AlmatyTripJourney />
+      <TourList />
+      <WhyChooseUs />
+      <Reviews />
     </div>
   );
 }
-
-export default Home;

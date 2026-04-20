@@ -1,12 +1,12 @@
 // src/data/toursData.js
 const tours = [
-
   {
     id: 1,
     image: "https://i.pinimg.com/736x/8d/b6/f4/8db6f4b2b79bf652243e9f693a4a2e4b.jpg",
     title: "Almaty City Tour",
-  
-    description: "Excursion to the main attractions of Almaty.",
+    description: "Discover the soul of Almaty in one unforgettable day.",
+    fullDescription:
+      "Step into the heart of Central Asia's most vibrant city. This immersive city tour takes you from the iconic Medeu skating rink at 1691m altitude down to the bustling Green Bazaar, then up to the breathtaking Shymbulak ski resort. Visit Soviet-era landmarks, taste authentic Kazakh cuisine, and end the day with panoramic views from Kok-Tobe — Almaty's beloved hilltop park.",
     locations: [
       "Medeu",
       "Green Bazaar",
@@ -16,13 +16,33 @@ const tours = [
       "Ascension Cathedral",
     ],
     isVip: true,
+    price: 15000,
+    rating: 4.9,
+    durationHours: 10,
+    nextDateISO: "2026-04-25",
+    groupSize: "2–8",
+    difficulty: "Easy",
+    included: [
+      "Professional bilingual guide (EN/RU)",
+      "Comfortable transport",
+      "All entry fees",
+      "Professional photo session",
+      "Traditional tea ceremony",
+    ],
+    highlights: [
+      "Highest skating rink in the world at Medeu (1691m)",
+      "Cable car ride to Shymbulak ski resort",
+      "Soviet mosaics & monuments at Panfilov Park",
+      "Panoramic sunset views from Kok-Tobe",
+    ],
   },
   {
     id: 2,
     image: "https://i.pinimg.com/736x/5b/23/54/5b23546f45b945768ca00a4cced91cb1.jpg",
-    title: "One-Day Tour 6 Locations",
-  
-    description: "An intensive tour of the most beautiful places in Zhetysu in just one day!",
+    title: "Zhetysu Canyon Adventure",
+    description: "Six legendary landscapes in one breathtaking day.",
+    fullDescription:
+      "Experience the raw power of Kazakhstan's most dramatic landscapes. From the rust-colored walls of Charyn Canyon — often compared to the Grand Canyon — to the ethereal turquoise waters of Kaindy Lake with its ghostly sunken forest of tree trunks rising from the surface. This tour packs six UNESCO-worthy sites into a single epic day of adventure.",
     locations: [
       "Charyn Canyon",
       "Kaindy Lake",
@@ -32,13 +52,33 @@ const tours = [
       "Black Canyon",
     ],
     isVip: false,
+    price: 22000,
+    rating: 4.8,
+    durationHours: 14,
+    nextDateISO: "2026-04-26",
+    groupSize: "4–12",
+    difficulty: "Moderate",
+    included: [
+      "Expert naturalist guide",
+      "4WD off-road transport",
+      "Packed lunch & trail snacks",
+      "All national park entry fees",
+      "Safety equipment & first aid",
+    ],
+    highlights: [
+      "\"Kazakhstan's Grand Canyon\" glowing at sunrise",
+      "Kaindy Lake — eerie sunken spruce forest",
+      "Off-road trails through Black Canyon",
+      "Wild Charyn River viewpoints",
+    ],
   },
   {
     id: 3,
     image: "https://i.pinimg.com/736x/96/ec/f8/96ecf8a1306b2a753eebe8fb2c45f090.jpg",
-    title: "One-Day VIP Tour 7 Locations",
-   
-    description: "VIP tour with maximum comfort and additional locations.",
+    title: "VIP Grand Zhetysu — 7 Wonders",
+    description: "The ultimate premium experience across 7 iconic locations.",
+    fullDescription:
+      "The pinnacle of Kazakh adventure travel. This exclusive VIP tour unlocks all seven of Zhetysu's most spectacular destinations with full luxury service — private 4WD, gourmet picnic, dedicated photographer, and exclusive access to the hidden Moon Canyon that standard tours never reach. Perfect for those who want Kazakhstan's natural wonders without compromise.",
     locations: [
       "Charyn Canyon",
       "Charyn River",
@@ -48,9 +88,29 @@ const tours = [
       "Moon Canyon",
       "Kaindy Lake",
     ],
-    isVip: false,
+    isVip: true,
+    price: 35000,
+    rating: 5.0,
+    durationHours: 16,
+    nextDateISO: "2026-04-27",
+    groupSize: "2–6",
+    difficulty: "Moderate",
+    included: [
+      "Private VIP guide (EN/RU/KZ)",
+      "Luxury private 4WD vehicle",
+      "Gourmet picnic lunch at Kolsai",
+      "Drone & photography package",
+      "All entry fees included",
+      "Exclusive Moon Canyon access",
+      "Emergency first aid kit",
+    ],
+    highlights: [
+      "Moon Canyon — exclusive private access",
+      "Professional drone aerial photography",
+      "Gourmet lakeside picnic at Kolsai",
+      "All 7 Zhetysu wonders in one day",
+    ],
   },
+];
 
-]
-
-export default tours
+export default tours;

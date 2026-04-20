@@ -1,71 +1,118 @@
 .why-us {
+  padding: 80px 24px;
+  background: var(--bg-2, #111827);
+  position: relative;
+  overflow: hidden;
+}
+.why-us::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    url("https://i.pinimg.com/1200x/02/aa/6e/02aa6e81ed05465f446bb1ecefa0647d.jpg")
+    no-repeat center / cover;
+  opacity: 0.06;
+  pointer-events: none;
+}
+
+.why-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.why-header {
   text-align: center;
-  padding: 60px 20px;
-  background: #f9f9f9;
-  background: url("/public/111.jpg") no-repeat center/cover; /* image from public */
+  margin-bottom: 52px;
 }
 
-.why-us h2 {
-  font-size: 2.2rem;
-  margin-bottom: 40px;
-  color: #f8f1f1;
-}
-
+/* ── Grid ────────────────────────────────────────────────── */
 .why-grid {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 25px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  justify-items: center;
 }
 
-.why_text {
-  color: #f9f9f9;
-}
-
+/* ── Flip Card ───────────────────────────────────────────── */
 .why-card {
-  background: transparent;
-  width: 220px;
-  height: 180px;
+  width: 100%;
+  max-width: 260px;
+  height: 220px;
   perspective: 1000px;
   cursor: pointer;
 }
 
-.why-card .front, 
-.why-card .back {
-  position: absolute;
+.why-card-inner {
+  position: relative;
   width: 100%;
   height: 100%;
-  border-radius: 15px;
+  transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.why-card:hover .why-card-inner,
+.why-card:focus-within .why-card-inner {
+  transform: rotateY(180deg);
+}
+
+.why-front,
+.why-back {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transition: transform 0.8s;
-  backface-visibility: hidden;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-  padding: 20px;
+  padding: 28px 22px;
+  text-align: center;
 }
 
-.why-card .front {
-  background: white;
+/* Front */
+.why-front {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  gap: 10px;
+}
+.why-icon {
+  font-size: 42px;
+  line-height: 1;
+  filter: drop-shadow(0 4px 12px rgba(255, 152, 0, 0.3));
+}
+.why-card-title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: #f1f5f9;
+}
+.why-flip-hint {
+  font-size: 10.5px;
+  color: rgba(255, 255, 255, 0.25);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-top: 4px;
 }
 
-.why-card .back {
-  background: linear-gradient(135deg, #ff7e5f, #feb47b);
-  color: white;
+/* Back */
+.why-back {
+  background: linear-gradient(135deg, #ff9800 0%, #ff5722 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   transform: rotateY(180deg);
-  font-size: 0.95rem;
+  gap: 12px;
+}
+.why-icon-sm { font-size: 26px; line-height: 1; }
+.why-back p {
+  margin: 0;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.92);
+  line-height: 1.6;
 }
 
-.why-card:hover .front {
-  transform: rotateY(180deg);
-}
-
-.why-card:hover .back {
-  transform: rotateY(360deg);
-}
-
-.icon {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
+/* Hover glow on card */
+.why-card:hover .why-front {
+  box-shadow: 0 0 30px rgba(255, 152, 0, 0.12);
 }

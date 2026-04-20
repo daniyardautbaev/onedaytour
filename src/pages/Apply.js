@@ -1,69 +1,65 @@
-// src/pages/Apply.js
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
+import { useLang } from "../context/LangContext";
 import "./Apply.css";
-import ContactUs from "../components/ContactUs";
 
-function Apply() {
-  const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    email: "",
-  });
+const CONTACTS = [
+  { href: "https://wa.me/77072439005", label: "WhatsApp", sub: "Reply within 15 min", icon: "💬", cls: "contact-wa", external: true },
+  { href: "tel:+77786680335",           label: "+7 778 668 03 35", sub: "Mon – Sun  9:00–21:00", icon: "📞", cls: "contact-phone", external: false },
+  { href: "mailto:onedaytour@gmail.com", label: "onedaytour@gmail.com", sub: "We reply same day", icon: "✉️", cls: "contact-email", external: false },
+  { href: "https://t.me/onedaytour",    label: "Telegram", sub: "@onedaytour", icon: "✈️", cls: "contact-tg", external: true },
+];
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Заявка отправлена:", formData);
-    alert("Спасибо! Мы свяжемся с вами.");
-    navigate("/"); // после отправки — на главную
-  };
+export default function Apply() {
+  const { t } = useLang();
+  const ta = t.apply;
 
   return (
-    <section className="bg-amber-50 min-h-[70vh] flex items-center justify-center px-4 py-16" aria-labelledby="contact-title">
-      <div className="max-w-xl w-full text-center bg-white rounded-2xl shadow-lg p-10">
-        <h1 id="contact-title" className="text-3xl sm:text-4xl font-extrabold text-gray-800 mb-4">
-          Свяжитесь с нами
-        </h1>
-        <p className="text-gray-500 mb-8 text-base sm:text-lg">
-          Мы всегда на связи и рады помочь вам с любыми вопросами по турам.
-        </p>
-
-        <ul className="space-y-4">
-          <li>
-            <a
-              href="mailto:zhanibekbeisenov8@gmail.com"
-              className="block w-full py-4 px-6 rounded-xl font-semibold text-white text-lg bg-gradient-to-r from-blue-500 to-green-500 shadow-md hover:shadow-lg hover:-translate-y-1 transform transition"
-            >
-              ✉️ onedaytour@gmail.com
-            </a>
-          </li>
-          <li>
-            <a
-              href="tel:+77786680335"
-              className="block w-full py-4 px-6 rounded-xl font-semibold text-white text-lg bg-gradient-to-r from-orange-400 to-orange-600 shadow-md hover:shadow-lg hover:-translate-y-1 transform transition"
-            >
-              📞 +7 778 668 03 35
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://wa.me/77476467919"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block w-full py-4 px-6 rounded-xl font-semibold text-white text-lg bg-gradient-to-r from-green-400 to-green-600 shadow-md hover:shadow-lg hover:-translate-y-1 transform transition"
-            >
-              💬 WhatsApp Chat
-            </a>
-          </li>
-        </ul>
+    <div className="apply-page">
+      <div className="apply-visual">
+        <div className="apply-visual-overlay" />
+        <div className="apply-visual-content">
+          <h2 className="apply-visual-title">
+            {ta.visualTitle} <span>{ta.visualAccent}</span> {ta.visualSuffix}
+          </h2>
+          <p className="apply-visual-sub">{ta.visualSub}</p>
+          <div className="apply-visual-badges">
+            {ta.badges.map((b, i) => <span key={i}>{b}</span>)}
+          </div>
+        </div>
       </div>
-    </section>
+
+      <div className="apply-panel">
+        <div className="apply-panel-inner">
+          <span className="section-eyebrow">{ta.eyebrow}</span>
+          <h1 className="apply-title">
+            {ta.title} <span className="accent-text">{ta.titleAccent}</span>
+          </h1>
+          <p className="apply-sub">{ta.sub}</p>
+
+          <div className="contact-options">
+            {CONTACTS.map((c, i) => (
+              <a
+                key={i}
+                href={c.href}
+                className={`contact-option ${c.cls}`}
+                {...(c.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+              >
+                <span className="co-icon">{c.icon}</span>
+                <div className="co-text">
+                  <span className="co-label">{c.label}</span>
+                  <span className="co-sub">{c.sub}</span>
+                </div>
+                <span className="co-arrow">→</span>
+              </a>
+            ))}
+          </div>
+
+          <p className="apply-back-link">
+            {ta.backText} <Link to="/tours">{ta.backLink}</Link>
+          </p>
+        </div>
+      </div>
+    </div>
   );
 }
-
-export default Apply;
