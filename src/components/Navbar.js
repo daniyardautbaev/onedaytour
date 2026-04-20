@@ -1,17 +1,14 @@
-// src/components/Navbar.js
 import React, { useEffect, useId, useRef, useState, useCallback } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useLang } from "../context/LangContext";
 import "./Navbar.css";
 
-const DEFAULT_TOURS = [
-  { id: 1, name: "Горы Алматы", description: "Красивый тур в горы Алматы с видами и прогулками." },
-  { id: 2, name: "Конный тур", description: "Поездка на лошадях по живописным местам." },
-];
+const LANG_ORDER = ["en", "ru", "kk"];
 
-export default function Navbar({ tours = DEFAULT_TOURS, onLangChange }) {
+export default function Navbar({ tours = [] }) {
+  const { lang, setLang, t } = useLang();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [lang, setLang] = useState("ru");
 
   const menuButtonRef = useRef(null);
   const menuRef = useRef(null);
@@ -21,9 +18,7 @@ export default function Navbar({ tours = DEFAULT_TOURS, onLangChange }) {
 
   useEffect(() => {
     function onDocClick(e) {
-      if (!navRef.current) return;
-      const within = navRef.current.contains(e.target);
-      if (!within) {
+      if (navRef.current && !navRef.current.contains(e.target)) {
         setMenuOpen(false);
         setMobileOpen(false);
       }
@@ -35,52 +30,32 @@ export default function Navbar({ tours = DEFAULT_TOURS, onLangChange }) {
   const onMenuKeyDown = useCallback((e) => {
     const items = menuRef.current?.querySelectorAll('[role="menuitem"]');
     if (!items || items.length === 0) return;
-    const currentIndex = Array.from(items).indexOf(document.activeElement);
-
-    switch (e.key) {
-      case "Escape":
-        setMenuOpen(false);
-        menuButtonRef.current?.focus();
-        break;
-      case "ArrowDown":
-        e.preventDefault();
-        items[(currentIndex + 1) % items.length].focus();
-        break;
-      case "ArrowUp":
-        e.preventDefault();
-        items[(currentIndex - 1 + items.length) % items.length].focus();
-        break;
-      default:
-        break;
-    }
+    const idx = Array.from(items).indexOf(document.activeElement);
+    if (e.key === "Escape") { setMenuOpen(false); menuButtonRef.current?.focus(); }
+    else if (e.key === "ArrowDown") { e.preventDefault(); items[(idx + 1) % items.length].focus(); }
+    else if (e.key === "ArrowUp")   { e.preventDefault(); items[(idx - 1 + items.length) % items.length].focus(); }
   }, []);
 
-  const onHoverEnter = () => setMenuOpen(true);
-  const onHoverLeave = () => setMenuOpen(false);
-
   const cycleLang = () => {
-    const order = ["kk", "ru", "en"];
-    const next = order[(order.indexOf(lang) + 1) % order.length];
+    const next = LANG_ORDER[(LANG_ORDER.indexOf(lang) + 1) % LANG_ORDER.length];
     setLang(next);
-    onLangChange?.(next);
   };
 
   return (
-    <nav ref={navRef} className="navbar" aria-label="Главная навигация">
+    <nav ref={navRef} className="navbar" aria-label="Main navigation">
       <div className="logo">
         <Link to="/" className="logo-link">ALMATY TOUR</Link>
       </div>
 
       <ul className="nav-links" role="menubar">
         <li role="none">
-          <Link role="menuitem" to="/" className="nav-link">Home</Link>
+          <Link role="menuitem" to="/" className="nav-link">{t.nav.home}</Link>
         </li>
-
         <li
           role="none"
           className="dropdown"
-          onMouseEnter={onHoverEnter}
-          onMouseLeave={onHoverLeave}
+          onMouseEnter={() => setMenuOpen(true)}
+          onMouseLeave={() => setMenuOpen(false)}
         >
           <button
             ref={menuButtonRef}
@@ -89,18 +64,17 @@ export default function Navbar({ tours = DEFAULT_TOURS, onLangChange }) {
             aria-haspopup="true"
             aria-expanded={menuOpen}
             aria-controls={listboxId}
-            onClick={() => setMenuOpen((v) => !v)}
+            onClick={() => setMenuOpen(v => !v)}
           >
-            Tours
+            {t.nav.tours}
             <span className={`chevron ${menuOpen ? "open" : ""}`} aria-hidden>▾</span>
           </button>
-
           <ul
             id={listboxId}
             ref={menuRef}
             className={`dropdown-menu ${menuOpen ? "show" : ""}`}
             role="menu"
-            aria-label="Список туров"
+            aria-label={t.nav.tours}
             onKeyDown={onMenuKeyDown}
           >
             {tours.map((tour) => (
@@ -109,33 +83,32 @@ export default function Navbar({ tours = DEFAULT_TOURS, onLangChange }) {
                   role="menuitem"
                   className="dropdown-item"
                   tabIndex={menuOpen ? 0 : -1}
-                  onClick={() => {
-                    setMenuOpen(false);
-                    navigate(`/tours/${tour.id}`);
-                  }}
+                  onClick={() => { setMenuOpen(false); navigate(`/tours/${tour.id}`); }}
                 >
-                  {tour.name}
+                  {tour.title}
                 </button>
               </li>
             ))}
           </ul>
         </li>
-
-        <li role="none"><Link role="menuitem" to="/contact" className="nav-link">Contact</Link></li>
-        <li role="none"><Link role="menuitem" to="/about" className="nav-link">About Us</Link></li>
+        <li role="none">
+          <Link role="menuitem" to="/contact" className="nav-link">{t.nav.contact}</Link>
+        </li>
+        <li role="none">
+          <Link role="menuitem" to="/about" className="nav-link">{t.nav.about}</Link>
+        </li>
       </ul>
 
       <div className="nav-actions">
-        <button type="button" className="lang-switch" onClick={cycleLang}>
+        <button type="button" className="lang-switch" onClick={cycleLang} title="Switch language">
           🌐 <span className="lang-code">{lang.toUpperCase()}</span>
         </button>
-
         <button
           type="button"
           className={`hamburger ${mobileOpen ? "is-active" : ""}`}
-          aria-label="Открыть меню"
+          aria-label="Open menu"
           aria-expanded={mobileOpen}
-          onClick={() => setMobileOpen((v) => !v)}
+          onClick={() => setMobileOpen(v => !v)}
         >
           <span aria-hidden className="bar" />
           <span aria-hidden className="bar" />
@@ -143,26 +116,30 @@ export default function Navbar({ tours = DEFAULT_TOURS, onLangChange }) {
         </button>
       </div>
 
-      {/* мобильное меню */}
       <div className={`mobile-drawer ${mobileOpen ? "open" : ""}`}>
-        <Link className="mobile-link" to="/" onClick={() => setMobileOpen(false)}>Home</Link>
+        <Link className="mobile-link" to="/" onClick={() => setMobileOpen(false)}>{t.nav.home}</Link>
         <details className="mobile-dropdown">
-          <summary>Tours</summary>
+          <summary>{t.nav.tours}</summary>
           <div className="mobile-dropdown-items">
-            {tours.map((t) => (
+            {tours.map(tour => (
               <Link
-                key={t.id}
-                to={`/tours/${t.id}`}
+                key={tour.id}
+                to={`/tours/${tour.id}`}
                 className="mobile-sublink"
                 onClick={() => setMobileOpen(false)}
               >
-                {t.name}
+                {tour.title}
               </Link>
             ))}
           </div>
         </details>
-        <Link className="mobile-link" to="/contact" onClick={() => setMobileOpen(false)}>Contact</Link>
-        <Link className="mobile-link" to="/about" onClick={() => setMobileOpen(false)}>About Us</Link>
+        <Link className="mobile-link" to="/contact" onClick={() => setMobileOpen(false)}>{t.nav.contact}</Link>
+        <Link className="mobile-link" to="/about"   onClick={() => setMobileOpen(false)}>{t.nav.about}</Link>
+        <div className="mobile-lang">
+          <button type="button" className="lang-switch" onClick={cycleLang}>
+            🌐 <span className="lang-code">{lang.toUpperCase()}</span>
+          </button>
+        </div>
       </div>
     </nav>
   );

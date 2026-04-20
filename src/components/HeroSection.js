@@ -1,28 +1,28 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useLang } from "../context/LangContext";
 import "./HeroSection.css";
 
 export default function HeroSection() {
   const navigate = useNavigate();
-
-  const handleClick = () => {
-    navigate("/apply");
-  };
+  const { t } = useLang();
 
   return (
     <section className="hero" aria-label="Hero section">
       <div className="hero-overlay">
-        <h1 className="hero-title">OneDayTour</h1>
-        <p className="hero-subtitle">
-          Your guide to unforgettable adventures in the Almaty.
-        </p>
+        <span className="hero-eyebrow">Kazakhstan · Almaty</span>
+        <h1 className="hero-title">{t.hero.title}</h1>
+        <p className="hero-subtitle">{t.hero.sub}</p>
         <button
           className="hero-btn"
-          onClick={handleClick}
-          aria-label="Перейти на страницу заявки"
+          onClick={() => navigate("/apply")}
+          aria-label={t.hero.cta}
         >
-          Contact us
+          {t.hero.cta}
         </button>
+      </div>
+      <div className="hero-scroll-hint" aria-hidden>
+        <span />
       </div>
     </section>
   );

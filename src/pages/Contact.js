@@ -1,49 +1,45 @@
-// src/pages/Contact.js
+import React from "react";
+import { useLang } from "../context/LangContext";
+import "./Contact.css";
 
+export default function Contact() {
+  const { t } = useLang();
+  const tc = t.contact;
 
-
-const Contact = () => {
   return (
-    <section className="min-h-screen flex items-center justify-center px-4 py-16" aria-labelledby="contact-title">
-      <div className="max-w-xl w-full text-center bg-white rounded-2xl shadow-lg p-10">
-        <h1 id="contact-title" className="text-3xl sm:text-4xl font-extrabold text-gray-800 mb-4">
-          Contact us and get exclusive offer
-        </h1>
-        <p className="text-gray-500 mb-8 text-base sm:text-lg">
-          We are always in touch and happy to help you with any questions about tours.
-        </p>
+    <div className="contact-page">
+      <div className="contact-card">
+        <span className="section-eyebrow">{t.apply.eyebrow}</span>
+        <h1 className="contact-title">{tc.title}</h1>
+        <p className="contact-sub">{tc.sub}</p>
 
-        <ul className="space-y-4">
-          <li>
-            <a
-              href="mailto:onedaytour@gmail.com"
-              className="block w-full py-4 px-6 rounded-xl font-semibold text-white text-lg bg-gradient-to-r from-blue-500 to-green-500 shadow-md hover:shadow-lg hover:-translate-y-1 transform transition"
-            >
-              ✉️ onedaytour@gmail.com
-            </a>
-          </li>
-          <li>
-            <a
-              href="tel:+77072439005"
-              className="block w-full py-4 px-6 rounded-xl font-semibold text-white text-lg bg-gradient-to-r from-orange-400 to-orange-600 shadow-md hover:shadow-lg hover:-translate-y-1 transform transition"
-            >
-              📞 +7 707 243 90 05
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://wa.me/77072439005"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block w-full py-4 px-6 rounded-xl font-semibold text-white text-lg bg-gradient-to-r from-green-400 to-green-600 shadow-md hover:shadow-lg hover:-translate-y-1 transform transition"
-            >
-              💬 WhatsApp Chat
-            </a>
-          </li>
-        </ul>
+        <div className="contact-options">
+          <a href="mailto:onedaytour@gmail.com" className="co-card co-email">
+            <span className="co-ico">✉️</span>
+            <div className="co-info">
+              <span className="co-label">onedaytour@gmail.com</span>
+              <span className="co-hint">We reply same day</span>
+            </div>
+            <span className="co-arrow">→</span>
+          </a>
+          <a href="tel:+77072439005" className="co-card co-phone">
+            <span className="co-ico">📞</span>
+            <div className="co-info">
+              <span className="co-label">+7 707 243 90 05</span>
+              <span className="co-hint">Mon – Sun  9:00–21:00</span>
+            </div>
+            <span className="co-arrow">→</span>
+          </a>
+          <a href="https://wa.me/77072439005" target="_blank" rel="noopener noreferrer" className="co-card co-wa">
+            <span className="co-ico">💬</span>
+            <div className="co-info">
+              <span className="co-label">WhatsApp</span>
+              <span className="co-hint">Reply within 15 min</span>
+            </div>
+            <span className="co-arrow">→</span>
+          </a>
+        </div>
       </div>
-    </section>
+    </div>
   );
-};
-
-export default Contact;
+}

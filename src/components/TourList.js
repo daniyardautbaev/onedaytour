@@ -1,31 +1,34 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useLang } from "../context/LangContext";
 import toursData from "../data/toursData";
 import TourCard from "./TourCard";
 import "./TourList.css";
 
-/**
- * Renders a responsive grid of tours with an empty state.
- * Pass `tours` to override the default dataset (e.g., from API/TanStack Query).
- */
 export default function TourList({ tours = toursData }) {
+  const { t } = useLang();
   const hasTours = Array.isArray(tours) && tours.length > 0;
 
   return (
     <section className="tours-section" aria-labelledby="tours-title">
-      <h2 id="tours-title" className="tours-title">Other Tours</h2>
-      <div className="tours-dots" aria-hidden>• • • • • •</div>
+      <div className="tours-header">
+        <span className="section-eyebrow">{t.tourList.eyebrow}</span>
+        <h2 id="tours-title" className="section-heading">
+          {t.tourList.heading} <span className="accent-text">{t.tourList.headingAccent}</span>
+        </h2>
+        <div className="divider-ornament">
+          <span className="divider-ornament-dot" />
+        </div>
+      </div>
 
       {hasTours ? (
         <div className="tours-grid">
-          {tours.map((tour) => (
-            <TourCard key={tour.id} {...tour} />
-          ))}
+          {tours.map(tour => <TourCard key={tour.id} {...tour} />)}
         </div>
       ) : (
         <div className="tours-empty">
-          <p>Пока нет доступных туров. Загляните позже или свяжитесь с нами.</p>
-          <Link to="/apply" className="tours-cta">Оставить заявку</Link>
+          <p>No tours available yet. Check back soon.</p>
+          <Link to="/apply" className="tours-cta">Leave a request</Link>
         </div>
       )}
     </section>
